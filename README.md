@@ -20,3 +20,10 @@
 安装必要的包
 
 python test.py
+
+### 运行结果
+0: 384x640 1 qr_code, 268.3ms
+Speed: 3.0ms preprocess, 268.3ms inference, 2.0ms postprocess per image at shape (1, 3, 384, 640)
+检测到并识别到的二维码:
+  内容: http://weixin.qq.com/r/mp/YEk0LAPEkF7vrUdP9xxy
+  位置 (xmin, ymin, xmax, ymax): [564, 286, 610, 332]
