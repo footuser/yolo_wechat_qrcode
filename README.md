@@ -17,7 +17,9 @@
 
 ### 试用
 
-安装必要的包
+pip install -r requirements.txt
+
+(注意如果不需要mcp相关的功能，无需安装mcp相关的包)
 
 python test.py
 
@@ -27,3 +29,9 @@ Speed: 3.0ms preprocess, 268.3ms inference, 2.0ms postprocess per image at shape
 检测到并识别到的二维码:
   内容: http://weixin.qq.com/r/mp/YEk0LAPEkF7vrUdP9xxy
   位置 (xmin, ymin, xmax, ymax): [564, 286, 610, 332]
+
+### api接口
+```shell
+python app.py
+
+测试 http://127.0.0.1:8080/check?url=

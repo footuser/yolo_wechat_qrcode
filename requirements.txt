@@ -1,2 +1,12 @@
+##########二维码检测只需要以下两个包
 ultralytics
 opencv-contrib-python
+
+##########api需要
+hypercorn
+fastapi
+
+##########mcp相关需要以下包
+langchain-mcp-adapters
+langgraph
+langchain-openai
