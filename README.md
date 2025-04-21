@@ -35,3 +35,16 @@ Speed: 3.0ms preprocess, 268.3ms inference, 2.0ms postprocess per image at shape
 python app.py
 
 测试 http://127.0.0.1:8080/check?url=
+```
+
+### MCP SERVER
+```shell
+python mcp_qr_check_server.py
+
+sse地址：http://0.0.0.0:8000
+```
+
+### MCP CLIENT
+```shell
+python mcp_client.py
+```
