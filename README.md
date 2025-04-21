@@ -19,8 +19,6 @@
 
 pip install -r requirements.txt
 
-(注意如果不需要mcp相关的功能，无需安装mcp相关的包)
-
 python test.py
 
 ### 运行结果
