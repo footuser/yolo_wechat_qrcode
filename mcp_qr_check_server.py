@@ -1,8 +1,5 @@
 from io import BytesIO
 
-from fastapi import Response
-from fastapi.responses import JSONResponse
-
 import ssl
 import requests
 import cv2
