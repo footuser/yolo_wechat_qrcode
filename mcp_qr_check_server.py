@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from io import BytesIO
 
 import ssl
@@ -12,11 +14,9 @@ import torch
 
 from mcp.server.fastmcp import FastMCP
 
-# 创建日志记录器
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
-# 日志格式
 log_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -33,7 +33,6 @@ detector = cv2.wechat_qrcode.WeChatQRCode(
     super_resolution_caffe_model_path
 )
 
-# 加载 YOLOv8 模型
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = YOLO(location + 'best-yolov8.pt')
 model.to(device)
@@ -56,19 +55,13 @@ async def qr_check(
     results = []
     predictions = model(image)
 
-    # 初始化 WeChatQRCode 检测器
-
-    # 遍历 YOLOv8 的预测结果
     for det in predictions:
         if det.boxes is not None and len(det.boxes) > 0:
             for box in det.boxes:
-                # 获取边界框坐标 (xyxy 格式)
                 x_min, y_min, x_max, y_max = map(int, box.xyxy[0].tolist())
 
-                # 裁剪二维码区域
                 cropped_qr_code = image[y_min:y_max, x_min:x_max]
 
-                # 使用 WeChatQRCode 检测和解码
                 decoded_info, points = detector.detectAndDecode(cropped_qr_code)
 
                 if decoded_info:
@@ -83,10 +76,8 @@ async def qr_check(
 
 
 def url2pil2(img_url):
-    # 设置用户代理
     user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36'
     headers = {'user-agent': user_agent}
-    # 发送请求
     response = requests.get(img_url, headers=headers, timeout=1)
     img_data = BytesIO(response.content)
     img = cv2.imdecode(np.frombuffer(img_data.read(), np.uint8), cv2.IMREAD_COLOR)
