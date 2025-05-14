@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/footuser-yolo-wechat-qrcode-badge.png)](https://mseep.ai/app/footuser-yolo-wechat-qrcode)
+
 # yolo_wechat_qrcode
 提高微信二维码识别精确率的小工具
 
